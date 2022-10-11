@@ -2,9 +2,8 @@
 
 ## Equipo de desarrollo
 
-- Alguien
-- Persona
-- etc.
+- Rodrigo Perez
+- Juan Francisco Carrique
 
 ## Capturas
 
@@ -17,6 +16,5 @@
 
 ## Otros
 
-- Curso/Facultad
-- Versión de wollok
-- Una vez terminado, no tenemos problemas en que el repositorio sea público / queremos manternerlo privado
+- Paradigmas de Programacion K2002 UTN FRBA
+- Una vez terminado, no tenemos problemas en que el repositorio sea público 
