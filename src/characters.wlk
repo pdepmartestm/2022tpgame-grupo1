@@ -41,25 +41,6 @@ object enemy inherits Character(position = game.at(new Range(start = 7, end = 12
 		
 		const directions = [0,1,2,3]
 		
-		if(self.bloqArriba().contains(self.position()))
-		{
-			directions.renove(0)
-		}
-		if(self.bloqAbajo().contains(self.position()))
-		{
-			directions.renove(1)
-		}
-		
-		if(self.bloqIzq().contains(self.position()))
-		{
-			directions.renove(2)
-		}
-		
-		if(self.bloqDer().contains(self.position()))
-		{
-			directions.renove(3)
-		}
-		
 		random = directions.anyOne()
 		
 		
