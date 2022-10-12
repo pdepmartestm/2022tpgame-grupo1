@@ -2,68 +2,82 @@ import wollok.game.*
 import elements.*
 import characters.*
 import gameManager.*
+import mecanicas.*
 
-class Level {
+object level {
+
+	const ancho = 15
+	const alto = 15
 
 	method start() {
-		game.addVisual(player)
+		// PROPIEDADES DEL JUEGO
+		game.clear()
+		game.cellSize(60)
+		game.height(alto)
+		game.width(ancho)
+		game.title("Laberinto")
 		game.boardGround("fondo.png")
-			// ACCIONES DEL JUEGO
-		keyboard.left().onPressDo{ player.move(player.position().left(1), player.bloqIzq())
-			enemy.moveRandom()
-			enemy.moveRandom()
+		game.addVisual(seleccion)
+		keyboard.num1().onPressDo{ self.one()}
+		keyboard.num2().onPressDo{ self.two()}
+		keyboard.num3().onPressDo{ self.three()}
+		keyboard.num4().onPressDo{ self.four()}
+	}
+
+	method one() {
+		if (!game.hasVisual(player)) {
+			game.clear()
+			game.boardGround("fondo.png")
+			game.addVisual(player)
+			game.addVisual(coin)
+			moves.config()
+			collides.config()
 		}
-		keyboard.right().onPressDo{ player.move(player.position().right(1), player.bloqDer())
-			enemy.moveRandom()
+	}
+
+	method two() {
+		if (!game.hasVisual(player)) {
+			game.clear()
+			game.boardGround("fondo.png")
+			game.addVisual(player)
+			game.addVisual(chest)
+			game.addVisual(key)
+			moves.config()
+			collides.config()
 		}
-		keyboard.up().onPressDo{ player.move(player.position().up(1), player.bloqArriba())
-			enemy.moveRandom()
+	}
+
+	method three() {
+		if (!game.hasVisual(player)) {
+			game.clear()
+			game.boardGround("fondo.png")
+			game.addVisual(player)
+			game.addVisual(coin)
+			game.addVisual(enemy)
+			moves.config()
+			collides.config()
 		}
-		keyboard.down().onPressDo{ player.move(player.position().down(1), player.bloqAbajo())
-			enemy.moveRandom()
+	}
+
+	method four() {
+		if (!game.hasVisual(player)) {
+			game.clear()
+			game.boardGround("fondo.png")
+			game.addVisual(player)
+			game.addVisual(chest)
+			game.addVisual(key)
+			game.addVisual(enemy)
+			moves.config()
+			collides.config()
 		}
-		game.whenCollideDo(player, { elemento => elemento.colision()})
 	}
 
 }
 
-object level1 inherits Level {
+object seleccion {
 
-	override method start() {
-		game.addVisual(coin)
-		super()
-	}
-
-}
-
-object level2 inherits Level {
-
-	override method start() {
-		game.addVisual(chest)
-		game.addVisual(key)
-		super()
-	}
-
-}
-
-object level3 inherits Level {
-
-	override method start() {
-		game.addVisual(enemy)
-		game.addVisual(coin)
-		super()
-	}
-
-}
-
-object level4 inherits Level {
-
-	override method start() {
-		game.addVisual(chest)
-		game.addVisual(key)
-		game.addVisual(enemy)
-		super()
-	}
+	var property image = "seleccion.png"
+	var property position = game.at(0, 0)
 
 }
 

@@ -7,26 +7,36 @@ object gameManager {
 
 
 	method win() {
-		coin.eliminar()
-		player.eliminar()
-		if(game.hasVisual(enemy))
-		{
-			enemy.eliminar()
-		}
+		player.position(game.origin())
+		game.clear()
+		game.boardGround("fondo.png")
 		game.addVisual(win)
+		
+		keyboard.num1().onPressDo{level.one()}
+		keyboard.num2().onPressDo{level.two()}
+		keyboard.num3().onPressDo{level.three()}
+		keyboard.num4().onPressDo{level.four()}
 	}
 
 	method lose() {
-		game.removeVisual(coin)
-		player.eliminar()
-		enemy.eliminar()
+		player.position(game.origin())
+		game.clear()
+		game.boardGround("fondo.png")
 		game.addVisual(lose)
+		keyboard.num1().onPressDo{level.one()}
+		keyboard.num2().onPressDo{level.two()}
+		keyboard.num3().onPressDo{level.three()}
+		keyboard.num4().onPressDo{level.four()}
 	}
 
 	method openChest() {
 		game.removeVisual(chest)
 		game.removeVisual(key)
 		game.addVisual(coin)
+		keyboard.num1().onPressDo{level.one()}
+		keyboard.num2().onPressDo{level.two()}
+		keyboard.num3().onPressDo{level.three()}
+		keyboard.num4().onPressDo{level.four()}
 	}
 
 }
