@@ -1,8 +1,31 @@
 import wollok.game.*
-import pepita.*
+import characters.*
+import elements.*
+import Levels.*
 
 program juego {
-	game.title("Juego Base")
-	game.addVisual(pepita)
+	
+	//PROPERTIES
+	const ancho = 15
+	const alto = 15
+	game.cellSize(60)
+	game.height(alto)
+	game.width(ancho)
+	game.title("Laberinto")
+	
+	//GAME 
+	level3.start()
+	keyboard.left().onPressDo{ player.move(player.position().left(1), player.bloqIzq())
+		enemy.moveRandom()
+	}
+	keyboard.right().onPressDo{ player.move(player.position().right(1), player.bloqDer())
+		enemy.moveRandom()
+	}
+	keyboard.up().onPressDo{ player.move(player.position().up(1), player.bloqArriba()) }
+	keyboard.down().onPressDo{ player.move(player.position().down(1), player.bloqAbajo())
+		enemy.moveRandom()
+	}
+	game.whenCollideDo(player, { elemento => elemento.colision() })
+
 	game.start()
 }
