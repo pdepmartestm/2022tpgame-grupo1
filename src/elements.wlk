@@ -25,8 +25,9 @@ object chest {
 }
 
 object key {
-
-	var property position = game.at(14, 5)
+	
+	
+	var property position = game.at(new Range(start = 1, end = 14).anyOne(), new Range(start = 1, end = 14).anyOne())
 
 	method image() = "key.png"
 

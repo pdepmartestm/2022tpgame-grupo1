@@ -14,7 +14,7 @@ program juego {
 	game.title("Laberinto")
 	
 	//GAME 
-	level3.start()
+	level2.start()
 	keyboard.left().onPressDo{ player.move(player.position().left(1), player.bloqIzq())
 		enemy.moveRandom()
 	}
