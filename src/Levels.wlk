@@ -30,6 +30,7 @@ object level {
 			game.boardGround("fondo.png")
 			game.addVisual(player)
 			game.addVisual(coin)
+			coin.reposicionarObj()
 			moves.config()
 			collides.config()
 		}
@@ -42,6 +43,8 @@ object level {
 			game.addVisual(player)
 			game.addVisual(chest)
 			game.addVisual(key)
+			chest.reposicionarObj()
+			key.reposicionarLlave()
 			moves.config()
 			collides.config()
 		}
@@ -53,6 +56,7 @@ object level {
 			game.boardGround("fondo.png")
 			game.addVisual(player)
 			game.addVisual(coin)
+			coin.reposicionarObj()
 			game.addVisual(enemy)
 			moves.config()
 			collides.config()
@@ -66,6 +70,8 @@ object level {
 			game.addVisual(player)
 			game.addVisual(chest)
 			game.addVisual(key)
+			chest.reposicionarObj()
+			key.reposicionarLlave()
 			game.addVisual(enemy)
 			moves.config()
 			collides.config()

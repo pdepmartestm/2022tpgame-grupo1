@@ -12,10 +12,9 @@ object gameManager {
 		game.boardGround("fondo.png")
 		game.addVisual(win)
 		
-		keyboard.num1().onPressDo{level.one()}
-		keyboard.num2().onPressDo{level.two()}
-		keyboard.num3().onPressDo{level.three()}
-		keyboard.num4().onPressDo{level.four()}
+		
+		
+		self.seleccionarDificultad()
 	}
 
 	method lose() {
@@ -23,16 +22,16 @@ object gameManager {
 		game.clear()
 		game.boardGround("fondo.png")
 		game.addVisual(lose)
-		keyboard.num1().onPressDo{level.one()}
-		keyboard.num2().onPressDo{level.two()}
-		keyboard.num3().onPressDo{level.three()}
-		keyboard.num4().onPressDo{level.four()}
+		self.seleccionarDificultad()
 	}
 
 	method openChest() {
 		game.removeVisual(chest)
 		game.removeVisual(key)
 		game.addVisual(coin)
+		coin.position(chest.position())
+	}
+	method seleccionarDificultad() {
 		keyboard.num1().onPressDo{level.one()}
 		keyboard.num2().onPressDo{level.two()}
 		keyboard.num3().onPressDo{level.three()}
@@ -54,4 +53,3 @@ object lose {
 	var property position = game.at(0, 0)
 
 }
-
