@@ -1,13 +1,18 @@
 import wollok.game.*
 import elements.*
 import characters.*
+import Levels.*
 
 object gameManager {
 
+
 	method win() {
-		game.removeVisual(coin)
+		coin.eliminar()
 		player.eliminar()
-		enemy.eliminar()
+		if(game.hasVisual(enemy))
+		{
+			enemy.eliminar()
+		}
 		game.addVisual(win)
 	}
 
