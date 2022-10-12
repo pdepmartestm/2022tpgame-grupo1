@@ -8,7 +8,35 @@ class Level {
 	method start() {
 		game.addVisual(player)
 		game.boardGround("fondo.png")
+		
+		
+		//ACCIONES DEL JUEGO
+		keyboard.left().onPressDo{ 
+			player.move(player.position().left(1), player.bloqIzq())
+			enemy.moveRandom()
+		enemy.moveRandom()
+		}
+		keyboard.right().onPressDo{ 
+			player.move(player.position().right(1), player.bloqDer())
+			enemy.moveRandom()
+		}
+		keyboard.up().onPressDo{ 
+			player.move(player.position().up(1), player.bloqArriba())
+			enemy.moveRandom()
+		}
+		keyboard.down().onPressDo{ 
+			player.move(player.position().down(1), player.bloqAbajo())
+			enemy.moveRandom()
+		}
+		game.whenCollideDo(
+			player, { elemento => elemento.colision() }
+		)
+		
+		
+		
 	}
+	
+	
 
 }
 

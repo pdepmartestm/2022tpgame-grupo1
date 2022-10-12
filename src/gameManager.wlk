@@ -29,14 +29,14 @@ object gameManager {
 object win {
 
 	var property image = "win.png"
-	var property position = game.at(1, 3)
+	var property position = game.at(0, 0)
 
 }
 
 object lose {
 
 	var property image = "lose.png"
-	var property position = game.at(1, 3)
+	var property position = game.at(0, 0)
 
 }
 

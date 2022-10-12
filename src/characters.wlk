@@ -19,10 +19,8 @@ class Character {
 	method move(newPos, bloqDireccion) {
 		if (newPos.x() >= 0 && newPos.x() < 15 && newPos.y() >= 0 && newPos.y() < 15 && !bloqDireccion.contains(self.position().toString())) {
 			self.position(newPos)
-			if (newPos.toString() == "0@2") {
-				console.println("kk")
-			}
 		}
+		
 	}
 
 }
@@ -31,7 +29,7 @@ object player inherits Character(position = game.at(0, 0), image = "player.png")
 
 }
 
-object enemy inherits Character(position = game.at(6, 11), image = "enemy.png") {
+object enemy inherits Character(position = game.at(new Range(start = 7, end = 12).anyOne(), new Range(start = 7, end = 12).anyOne()), image = "enemy.png") {
 
 	var property random = 0
 
@@ -40,7 +38,31 @@ object enemy inherits Character(position = game.at(6, 11), image = "enemy.png") 
 	}
 
 	method moveRandom() {
-		random = new Range(start = 0, end = 3).anyOne()
+		
+		const directions = [0,1,2,3]
+		
+		if(self.bloqArriba().contains(self.position()))
+		{
+			directions.renove(0)
+		}
+		if(self.bloqAbajo().contains(self.position()))
+		{
+			directions.renove(1)
+		}
+		
+		if(self.bloqIzq().contains(self.position()))
+		{
+			directions.renove(2)
+		}
+		
+		if(self.bloqDer().contains(self.position()))
+		{
+			directions.renove(3)
+		}
+		
+		random = directions.anyOne()
+		
+		
 		if (random == 0) {
 			self.move(self.position().up(1), self.bloqArriba())
 		}

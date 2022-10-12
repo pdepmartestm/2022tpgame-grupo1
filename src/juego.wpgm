@@ -5,7 +5,7 @@ import Levels.*
 
 program juego {
 	
-	//PROPERTIES
+	//PROPIEDADES DEL JUEGO
 	const ancho = 15
 	const alto = 15
 	game.cellSize(60)
@@ -14,18 +14,8 @@ program juego {
 	game.title("Laberinto")
 	
 	//GAME 
-	level2.start()
-	keyboard.left().onPressDo{ player.move(player.position().left(1), player.bloqIzq())
-		enemy.moveRandom()
-	}
-	keyboard.right().onPressDo{ player.move(player.position().right(1), player.bloqDer())
-		enemy.moveRandom()
-	}
-	keyboard.up().onPressDo{ player.move(player.position().up(1), player.bloqArriba()) }
-	keyboard.down().onPressDo{ player.move(player.position().down(1), player.bloqAbajo())
-		enemy.moveRandom()
-	}
-	game.whenCollideDo(player, { elemento => elemento.colision() })
+	level3.start()
+	
 
 	game.start()
 }
