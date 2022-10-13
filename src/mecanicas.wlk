@@ -19,6 +19,20 @@ object moves {
 			enemy.moveRandom()
 		}
 		
+		keyboard.a().onPressDo{ player.move(player.position().left(1), player.bloqIzq())
+			enemy.moveRandom()
+			enemy.moveRandom()
+		}
+		keyboard.d().onPressDo{ player.move(player.position().right(1), player.bloqDer())
+			enemy.moveRandom()
+		}
+		keyboard.w().onPressDo{ player.move(player.position().up(1), player.bloqArriba())
+			enemy.moveRandom()
+		}
+		keyboard.s().onPressDo{ player.move(player.position().down(1), player.bloqAbajo())
+			enemy.moveRandom()
+		}
+		
 	}
 	
 }

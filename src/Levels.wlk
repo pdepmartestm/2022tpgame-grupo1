@@ -28,6 +28,7 @@ object level {
 		if (!game.hasVisual(player)) {
 			game.clear()
 			game.boardGround("fondo.png")
+			game.addVisual(lvl1)
 			game.addVisual(player)
 			game.addVisual(coin)
 			coin.reposicionarObj()
@@ -40,6 +41,7 @@ object level {
 		if (!game.hasVisual(player)) {
 			game.clear()
 			game.boardGround("fondo.png")
+			game.addVisual(lvl2)
 			game.addVisual(player)
 			game.addVisual(chest)
 			game.addVisual(key)
@@ -54,6 +56,7 @@ object level {
 		if (!game.hasVisual(player)) {
 			game.clear()
 			game.boardGround("fondo.png")
+			game.addVisual(lvl3)
 			game.addVisual(player)
 			game.addVisual(coin)
 			coin.reposicionarObj()
@@ -67,6 +70,7 @@ object level {
 		if (!game.hasVisual(player)) {
 			game.clear()
 			game.boardGround("fondo.png")
+			game.addVisual(lvl4)
 			game.addVisual(player)
 			game.addVisual(chest)
 			game.addVisual(key)
@@ -86,4 +90,39 @@ object seleccion {
 	var property position = game.at(0, 0)
 
 }
+
+object lvl1 {
+
+	var property image = "lvl1.png"
+	var property position = game.at(0, 0)
+	
+	method colision(){}
+
+}
+object lvl2 {
+
+	var property image = "lvl2.png"
+	var property position = game.at(0, 0)
+	
+	method colision(){}
+
+}
+object lvl3 {
+
+	var property image = "lvl3.png"
+	var property position = game.at(0, 0)
+	
+	method colision(){}
+
+}
+object lvl4 {
+
+	var property image = "lvl4.png"
+	var property position = game.at(0, 0)
+	
+	method colision(){}
+
+}
+
+
 
