@@ -1,49 +1,47 @@
 import wollok.game.*
 import gameManager.*
 
+class Element {
 
-class Element
-{
 	var property position = game.at(12, 12)
 	var property image
-	const property rangoLlave = new Range(start= 3, end=14)
-	const property rangoObj = [9,10,11,12,13,14]
-	
+	const property keyRange = new Range(start = 3, end = 14)
+	const property objRange = new Range(start = 9, end = 14)
+
 	method position() = position
 
-	method eliminar() {
+	method delete() {
 		game.removeVisual(self)
 	}
-	
-	method reposicionarObj()
-	{
-		position = game.at(rangoObj.anyOne(),rangoObj.anyOne())
-	}
-	
-	method reposicionarLlave()
-	{
-		position = game.at(rangoLlave.anyOne(),rangoLlave.anyOne())
-	}
-}
 
-object coin inherits Element(image = "coin.png"){
+	method reposition() {
+		position = game.at(objRange.anyOne(), objRange.anyOne())
+	}
 
 	method colision() {
+	}
+
+}
+
+object coin inherits Element(image = "coin.png") {
+
+	override method colision() {
 		gameManager.win()
 	}
 
 }
 
-object chest inherits Element(image = "chest.png") {
-	method colision() {
-	}
-
-}
+const chest = new Element(image = "chest.png")
 
 object key inherits Element(image = "key.png") {
 
-	method colision() {
+	override method reposition() {
+		position = game.at(keyRange.anyOne(), keyRange.anyOne())
+	}
+
+	override method colision() {
 		gameManager.openChest()
 	}
 
 }
+

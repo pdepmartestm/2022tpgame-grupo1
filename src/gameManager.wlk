@@ -5,16 +5,12 @@ import Levels.*
 
 object gameManager {
 
-
 	method win() {
 		player.position(game.origin())
 		game.clear()
 		game.boardGround("fondo.png")
 		game.addVisual(win)
-		
-		
-		
-		self.seleccionarDificultad()
+		self.selectDifficulty()
 	}
 
 	method lose() {
@@ -22,7 +18,7 @@ object gameManager {
 		game.clear()
 		game.boardGround("fondo.png")
 		game.addVisual(lose)
-		self.seleccionarDificultad()
+		self.selectDifficulty()
 	}
 
 	method openChest() {
@@ -31,11 +27,12 @@ object gameManager {
 		game.addVisual(coin)
 		coin.position(chest.position())
 	}
-	method seleccionarDificultad() {
-		keyboard.num1().onPressDo{level.one()}
-		keyboard.num2().onPressDo{level.two()}
-		keyboard.num3().onPressDo{level.three()}
-		keyboard.num4().onPressDo{level.four()}
+
+	method selectDifficulty() {
+		keyboard.num1().onPressDo{ lvl1.start()}
+		keyboard.num2().onPressDo{ lvl2.start()}
+		keyboard.num3().onPressDo{ lvl3.start()}
+		keyboard.num4().onPressDo{ lvl4.start()}
 	}
 
 }
@@ -53,3 +50,4 @@ object lose {
 	var property position = game.at(0, 0)
 
 }
+

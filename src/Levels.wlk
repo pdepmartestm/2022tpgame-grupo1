@@ -18,71 +18,47 @@ object level {
 		game.title("Laberinto")
 		game.boardGround("fondo.png")
 		game.addVisual(seleccion)
-		keyboard.num1().onPressDo{ self.one()}
-		keyboard.num2().onPressDo{ self.two()}
-		keyboard.num3().onPressDo{ self.three()}
-		keyboard.num4().onPressDo{ self.four()}
+		keyboard.num1().onPressDo{ lvl1.start()}
+		keyboard.num2().onPressDo{ lvl2.start()}
+		keyboard.num3().onPressDo{ lvl3.start()}
+		keyboard.num4().onPressDo{ lvl4.start()}
 	}
+}
 
-	method one() {
+class Levels {
+
+	var property visuals = []
+	var property objective = coin
+	var property hasKey = false
+	var property hasEnemy = false
+
+	method start() {
 		if (!game.hasVisual(player)) {
 			game.clear()
 			game.boardGround("fondo.png")
-			game.addVisual(lvl1)
-			game.addVisual(player)
-			game.addVisual(coin)
-			coin.reposicionarObj()
-			moves.config()
-			collides.config()
-		}
-	}
-
-	method two() {
-		if (!game.hasVisual(player)) {
-			game.clear()
-			game.boardGround("fondo.png")
-			game.addVisual(lvl2)
-			game.addVisual(player)
-			game.addVisual(chest)
-			game.addVisual(key)
-			chest.reposicionarObj()
-			key.reposicionarLlave()
-			moves.config()
-			collides.config()
-		}
-	}
-
-	method three() {
-		if (!game.hasVisual(player)) {
-			game.clear()
-			game.boardGround("fondo.png")
-			game.addVisual(lvl3)
-			game.addVisual(player)
-			game.addVisual(coin)
-			coin.reposicionarObj()
-			game.addVisual(enemy)
-			moves.config()
-			collides.config()
-		}
-	}
-
-	method four() {
-		if (!game.hasVisual(player)) {
-			game.clear()
-			game.boardGround("fondo.png")
-			game.addVisual(lvl4)
-			game.addVisual(player)
-			game.addVisual(chest)
-			game.addVisual(key)
-			chest.reposicionarObj()
-			key.reposicionarLlave()
-			game.addVisual(enemy)
+			visuals.forEach{ visual => game.addVisual(visual)}
+			objective.reposition()
+			if (hasKey) {
+				key.reposition()
+			}
+			if (hasEnemy) {
+				enemy.reposition()
+				enemy.start()					
+			}
 			moves.config()
 			collides.config()
 		}
 	}
 
 }
+
+const lvl1 = new Levels(visuals = [ grafLvl1, coin, player ], objective = coin)
+
+const lvl2 = new Levels(visuals = [ grafLvl2, chest, key, player ], objective = chest, hasKey = true)
+
+const lvl3 = new Levels(visuals = [ grafLvl3, coin, enemy, player ], objective = coin, hasEnemy = true)
+
+const lvl4 = new Levels(visuals = [ grafLvl4, chest, key, enemy, player ], objective = chest, hasKey = true, hasEnemy = true)
 
 object seleccion {
 
@@ -91,38 +67,21 @@ object seleccion {
 
 }
 
-object lvl1 {
+class GrafLvl {
 
-	var property image = "lvl1.png"
-	var property position = game.at(0, 0)
-	
-	method colision(){}
+	var property image
+	const property position = game.at(0, 0)
 
-}
-object lvl2 {
-
-	var property image = "lvl2.png"
-	var property position = game.at(0, 0)
-	
-	method colision(){}
-
-}
-object lvl3 {
-
-	var property image = "lvl3.png"
-	var property position = game.at(0, 0)
-	
-	method colision(){}
-
-}
-object lvl4 {
-
-	var property image = "lvl4.png"
-	var property position = game.at(0, 0)
-	
-	method colision(){}
+	method colision() {
+	}
 
 }
 
+const grafLvl1 = new GrafLvl(image = "lvl1.png")
 
+const grafLvl2 = new GrafLvl(image = "lvl2.png")
+
+const grafLvl3 = new GrafLvl(image = "lvl3.png")
+
+const grafLvl4 = new GrafLvl(image = "lvl4.png")
 
