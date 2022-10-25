@@ -12,7 +12,7 @@ object level {
 	method start() {
 		// PROPIEDADES DEL JUEGO
 		game.clear()
-		game.cellSize(60)
+		game.cellSize(50)
 		game.height(alto)
 		game.width(ancho)
 		game.title("Laberinto")
@@ -31,6 +31,7 @@ class Levels {
 	var property objective = coin
 	var property hasKey = false
 	var property hasEnemy = false
+	var property enemies = [new Enemy(), new Enemy()]
 
 	method start() {
 		if (!game.hasVisual(player)) {
@@ -42,8 +43,10 @@ class Levels {
 				key.reposition()
 			}
 			if (hasEnemy) {
-				enemy.reposition()
-				enemy.start()					
+				enemies.forEach({e=>
+				e.reposition()
+				e.start()
+				game.addVisual(e)})			
 			}
 			moves.config()
 			collides.config()
@@ -56,9 +59,9 @@ const lvl1 = new Levels(visuals = [ grafLvl1, coin, player ], objective = coin)
 
 const lvl2 = new Levels(visuals = [ grafLvl2, chest, key, player ], objective = chest, hasKey = true)
 
-const lvl3 = new Levels(visuals = [ grafLvl3, coin, enemy, player ], objective = coin, hasEnemy = true)
+const lvl3 = new Levels(visuals = [ grafLvl3, coin, player ], objective = coin, hasEnemy = true)
 
-const lvl4 = new Levels(visuals = [ grafLvl4, chest, key, enemy, player ], objective = chest, hasKey = true, hasEnemy = true)
+const lvl4 = new Levels(visuals = [ grafLvl4, chest, key, player ], objective = chest, hasKey = true, hasEnemy = true)
 
 object seleccion {
 

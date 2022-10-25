@@ -28,7 +28,7 @@ class Character {
 
 const player = new Character(position = game.at(0, 0), image = "player.png")
 
-object enemy inherits Character(position = game.at(12,12), image = "enemy.png") {
+class Enemy inherits Character(position = game.at(12,12), image = "enemy.png") {
 
 	var property random = 0
 
